@@ -32,7 +32,8 @@ Expressions - How values get displayed within the page -->
           This ng-show directive will specify an expression. The expression is store.product.canPurchase
 
           This directive is telling our button to only show if the value of this expression, store.product.canPurchase, is true -->
-          <div class="gallery" ng-show="product.images.length">
+          <div class="gallery" ng-show="product.images.length" ng-controller="GalleryController as gallery">
+            <img ng-src="{{product.images[gallery.current]}}" class="large-image" />
             <ul>
               <div ng-repeat="image in product.images">
               <img ng-src ="{{image}}" class="gem-thumb"/>
