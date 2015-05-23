@@ -31,13 +31,22 @@
   }); 
   	// You can do this singular if you make it this.product = gem or plural if this.products = gems
 
+  app.controller('GalleryController', function(){
+  	this.current = 0;
+  	this.setCurrent = function(newGallery){
+  		this.current = newGallery || 0;
+  	}
+  });
+
+
   app.controller('PanelController', function(){
   	this.tab = 1;
   	this.selectTab = function(setTab) {
   		this.tab = setTab; 
   	};
   	this.isSelected = function(checkTab){
-  		return this.tab === checkTab;
+  		// Select the class # from the tab #
+  		return this.tab === checkTab; 
   	}
   }); 
 
