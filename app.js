@@ -36,8 +36,7 @@
   	this.setCurrent = function(newGallery){
   		this.current = newGallery || 0;
   	}
-  });
-
+  }); 
 
   app.controller('PanelController', function(){
   	this.tab = 1;
@@ -61,6 +60,19 @@ var gems = [{
 	images: [
 		'images/emerald-cut.jpg',
 		'images/emerald-uncut.jpg'
+	],
+	reviews: [
+	{
+		stars: 5,
+		body: "I love this product",
+		author: "joe@thomas.com"
+
+	},
+	{
+		stars: 2,
+		body: "This gem sucks",
+		author: "minniemouse@gmail.com"
+	}
 	]
 },
 {
@@ -72,6 +84,19 @@ var gems = [{
 	images: [
 		'images/opal-cut.JPG',
 		'images/opal-uncut.jpg'
+	],
+	reviews: [
+	{
+		stars: 5,
+		body: "I've gotten so many compliments on this opal!!!",
+		author: "joe@thomas.com"
+
+	},
+	{
+		stars: 1,
+		body: "Didn't look like the photo, was much smaller and not very sparkly.",
+		author: "minniemouse@gmail.com"
+	}
 	]
 },
 {
@@ -83,7 +108,13 @@ var gems = [{
 	images: [
 		'images/amethyst-cut.JPG',
 		'images/amethyst-uncut.jpeg'
-	]
+	],
+	reviews: [
+	{
+		stars: 4,
+		body: "Gem was great but horrible customer service",
+		author: "jessiejames@gmail.com"
+	}]
 }
 ];
 

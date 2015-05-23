@@ -32,7 +32,7 @@ Expressions - How values get displayed within the page -->
           This ng-show directive will specify an expression. The expression is store.product.canPurchase
 
           This directive is telling our button to only show if the value of this expression, store.product.canPurchase, is true -->
-          <div class="gallery" ng-show="product.images.length" ng-controller="GalleryController as gallery">
+          <div class="gallery" ng-show="product.images.length" ng-controller="GalleryController as gallery  ">
             <img ng-src="{{product.images[gallery.current]}}" class="large-image" />
             <ul>
               <div ng-repeat="image in product.images">
@@ -51,7 +51,7 @@ Expressions - How values get displayed within the page -->
                 <a href ng-click="panel.selectTab(2)">Specifications</a> 
               </li>
               <li ng-class="{ active:panel.isSelected(3)}"> 
-                <a href ng-click="panel.selectTab(3)">Reviews</a> 
+                <a href ng-click="panel.selectTab(3)">Reviews</a>           
               </li>
             </ul>         
             <!-- Define which text to display when which tab is selected -->
@@ -65,7 +65,38 @@ Expressions - How values get displayed within the page -->
             </div>
             <div class="panel" ng-show="panel.isSelected(3) ">
               <h4>Reviews</h4>
-              <p>None yet</p>
+              <!-- We can use an ng-model to bind the form element values to the properties -->
+              <blockquote ng-repeat="review in product.reviews">
+                <b>Stars: {{review.stars}}</b><br/>
+                {{review.body}}
+                <br>
+                <cite>by: {{review.author}}</cite> 
+              </blockquote>
+              <form name="reviewForm">
+                <h4>Write a Review</h4>
+                <p>How many stars would you give your product?</p> 
+                <select ng-model="review.stars">
+                  <option value="1">1 star</option>
+                  <option value="2">2 stars</option>
+                  <option value="3">3 stars</option>
+                  <option value="4">4 stars</option>
+                  <option value="5">5 stars</option>
+                </select>
+                <br>
+                <p>Tell us what you thought about the product's quality.</p>
+                <textarea ng-model="review.body"></textarea><br/>
+                <label ng-model="review.author">Include your email to submit:</label>
+                <br>
+                <input ng-model="review.author" type="email" />
+                <input type="submit" value="Submit" />
+              </form>
+              <div class="review-preview">
+                <h4>Preview your Review</h4>
+                <p><b>Stars: </b>{{review.stars}}</p>
+                {{review.body}}
+                <p><b>Review by: </b>{{review.author}}</p>
+                <br>
+              </div>
             </div>
 
           </div> 
