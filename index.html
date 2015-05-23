@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<!-- Directives - HTML annotations that trigger javascript behaviors
+Modules - where application components live
+Controllers - Where we add application behavior
+Expressions - How values get displayed within the page -->
+
+<html ng-app="gemStore">
+<link rel="stylesheet" type="text/css" href="stylesheets/gemstyles.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <head>
+    <title>Codeschool Angular App Tutorial</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+  </head>
+  <!--  Attach the StoreController to the <body> tag, aliased as "store" -->
+  <body ng-controller="StoreController as store" class="container inventory">  
+    <div class="row">
+      <h1>Sakura's Gems</h1>
+      <h3>High-quality gems from the world's best suppliers.<h3/>
+    </div>
+      <!-- Cycle through all the products -->
+      <div class="product row" ng-repeat="product in store.products"> 
+        <div ng-hide="product.soldOut">
+          <div class="gembox">
+
+          <h2>{{product.name}}</h2>
+          <!-- Use angular's built-in 'currency' filter with | currency -->
+          <h4>{{product.price | currency }}</h4> 
+
+          <!--  This button should only show up if canPurchase is true - so the ng-show directive can create this behavior.
+          This ng-show directive will specify an expression. The expression is store.product.canPurchase
+
+          This directive is telling our button to only show if the value of this expression, store.product.canPurchase, is true -->
+          <div class="gallery" ng-show="product.images.length">
+            <ul>
+              <div ng-repeat="image in product.images">
+              <img ng-src ="{{image}}" class="gem-thumb"/>
+              </div>
+            </ul>
+          </div>
+          <div class="tabs" ng-init="tab = 1">
+            <ul class="nav nav-pills">
+              <li> <a href ng-click="tab = 1">Description</a> </li>
+              <li> <a href ng-click="tab = 2">Specifications</a> </li>
+              <li> <a href ng-click="tab = 3">Reviews</a> </li>
+            </ul>         
+
+            <div class="panel" ng-show="tab ===1">
+              <h4>Description</h4>
+              <p>{{product.description}}</p>
+            </div>
+            <div class="panel" ng-show="tab===2">
+              <h4>Specifications</h4>
+              <p>None yet</p>
+            </div>
+            <div class="panel" ng-show="tab===3">
+              <h4>Reviews</h4>
+              <p>None yet</p>
+            </div>
+
+          </div> 
+          <button ng-show="product.canPurchase">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+  </body>
+</html>
+
+<!-- Repeat images below:
+
+  <body class="list-group" ng-controller="StoreController as store">
+    <div class="list-group-item" ng-repeat="product in store.products">
+      <h3>{{product.name}} <em class="pull-right">{{product.price | currency}}</em></h3>
+
+      <div class="gallery">
+        <div class="img-wrap">
+          <img ng-src="{{product.images[0]}}" />
+        </div>
+        <ul class="img-thumbnails clearfix">
+          <li class="small-image pull-left thumbnail" ng-repeat="image in product.images">
+            <img ng-src={{image}} />
+          </li>
+        </ul>
+      </div>
+    </div>
+ -->
+
+ <!-- Only show if we have pictures (looks at length of picture array)
+
+<div class="gallery" ng-show="product.images.length">
+  -->
