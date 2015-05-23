@@ -41,9 +41,16 @@ Expressions - How values get displayed within the page -->
           </div>
           <div class="tabs" ng-init="tab = 1">
             <ul class="nav nav-pills">
-              <li> <a href ng-click="tab = 1">Description</a> </li>
-              <li> <a href ng-click="tab = 2">Specifications</a> </li>
-              <li> <a href ng-click="tab = 3">Reviews</a> </li>
+              <!-- To make the right tab become highlighted when clicked. If the tab === 1, we will set the class to "active". Otherwise, nothing. -->
+              <li ng-class="{ active:tab === 1}"> 
+                <a href ng-click="tab = 1">Description</a> 
+              </li>
+              <li ng-class="{ active:tab === 2}"> 
+                <a href ng-click="tab = 2">Specifications</a> 
+              </li>
+              <li ng-class="{ active:tab === 3}"> 
+                <a href ng-click="tab = 3">Reviews</a> 
+              </li>
             </ul>         
 
             <div class="panel" ng-show="tab ===1">
