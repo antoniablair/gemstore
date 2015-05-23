@@ -31,6 +31,16 @@
   }); 
   	// You can do this singular if you make it this.product = gem or plural if this.products = gems
 
+  app.controller('PanelController', function(){
+  	this.tab = 1;
+  	this.selectTab = function(setTab) {
+  		this.tab = setTab; 
+  	};
+  	this.isSelected = function(checkTab){
+  		return this.tab === checkTab;
+  	}
+  }); 
+
 // Keys and values in our gems data
 
 var gems = [{
